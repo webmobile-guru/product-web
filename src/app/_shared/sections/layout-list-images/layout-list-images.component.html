@@ -1,0 +1,43 @@
+<section class="module pb-0" id="works">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h2 class="module-title font-alt">{{ title }}</h2>
+        <div class="module-subtitle font-serif"></div>
+      </div>
+      <div class="col-sm-3">
+        <button class="btn btn-b btn-round" style="position: absolute; right: 0;" *ngIf="btnLink" (click)="createNewLayout()">Create New Layout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="filter font-alt">
+          <li style="cursor: pointer;" *ngFor="let layoutTypeItem of allLayoutType"
+            (click)="filterLayoutOption(layoutTypeItem.id)"><a class="wow fadeInUp">{{ layoutTypeItem.name }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ul class="works-grid works-grid-gut works-grid-3 works-hover-w">
+    <div class="row">
+      <div class="col-sm-12">
+        <li class="work-item" *ngFor="let layoutItem of filteredLayoutList | paginate: { itemsPerPage: 6, currentPage: p }">
+          <a (click)="goDetailLayout(layoutItem.id)">
+            <div class="work-image">
+              <img src="assets/images/portfolio/grid-portfolio1.jpg" alt="Portfolio Item" />
+            </div>
+            <div class="work-caption font-alt">
+              <h3 class="work-title">{{ layoutItem.title }}</h3>
+              <div class="work-descr">{{ layoutItem.description }}</div>
+            </div>
+          </a>
+        </li>
+      </div>
+    </div>
+  </ul>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</section>

@@ -1,0 +1,62 @@
+<div class="main">
+  <app-image-background [moduleTitle]="'Blog Standard'"
+    [moduleSubTitle]="'A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.'"
+    [backgroundImage]="'assets/images/portfolio/portfolio_header_bg.jpg'">
+  </app-image-background>
+
+  <section class="module-small">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-md-3 sidebar" style="padding-left: 30px;">
+          <div class="widget">
+            <ngx-treeview [config]="config" [items]="items" (selectedChange)="onSelectedChange($event)"
+              (filterChange)="onFilterChange($event)">
+            </ngx-treeview>
+          </div>
+        </div>
+
+        <div class="col-sm-8 col-sm-offset-1">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <h3 style="margin: 0px 30px 20px 20px">Data Sheet</h3>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <form role="form">
+                <div class="search-box">
+                  <input class="form-control" type="text" placeholder="Search..." />
+                  <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row" style="margin-bottom: 30px;">
+            <div class="col-12">
+              <ul class="works-grid works-grid-gut works-hover-w" id="works-grid">
+                <li class="work-item illustration webdesign"
+                  *ngFor="let datasheetItem of datasheetList | paginate: { itemsPerPage: 4, currentPage: p }">
+                  <a (click)=goDatasheetDetail(datasheetItem.id)>
+                    <div class="work-image">
+                      <img [src]="datasheetItem.image" alt="Portfolio Item" />
+                    </div>
+                    <div class="work-caption font-alt">
+                      <h3 class="work-title">{{ datasheetItem.workTitle }}</h3>
+                      <div class="work-descr">{{ datasheetItem.workDescr }}</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8 col-sm-offset-5 col-md-offset-4">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,26 @@
+::ng-deep {
+    .treeview-container .row-item .fa {
+      width: .8rem;
+      cursor: pointer;
+      margin-right: .3rem;
+      float: left;
+      margin-top: 0.3em;
+    }
+  
+    .form-check-inline {
+      display: inline;
+    }
+  
+    input[type="checkbox"] {
+      width: 16px;
+      /*Desired width*/
+      height: 16px;
+      /*Desired height*/
+      margin: 3px 5px 10px;
+    }
+    .form-check-label {
+        font-size: 14px;
+        font-weight: 550;
+    }
+  }
+  

@@ -1,0 +1,45 @@
+<div class="widget">
+  <form role="form">
+    <div class="search-box">
+      <input class="form-control" type="text" placeholder="Search..." />
+      <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+  </form>
+</div>
+
+<div class="widget">
+  <h5 class="widget-title font-alt">Blog Categories</h5>
+  <ul class="icon-list">
+    <li *ngFor="let blogCategory of blogCategories"><a >{{ blogCategory.title }}</a></li>
+  </ul>
+</div>
+
+<div class="widget">
+  <h5 class="widget-title font-alt">Popular Posts</h5>
+  <ul class="widget-posts">
+    <li class="clearfix" *ngFor="let popularPost of popularPosts">
+      <div class="widget-posts-image"><a ><img src="assets/images/rp-1.jpg" alt="Post Thumbnail" /></a></div>
+      <div class="widget-posts-body">
+        <div class="widget-posts-title"><a>{{ popularPost.title }}</a></div>
+        <div class="widget-posts-meta">{{ popularPost.published }}</div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="widget">
+  <h5 class="widget-title font-alt">Tag</h5>
+  <div class="tags font-serif">
+    <a rel="tag" *ngFor="let blogTag of blogTags">{{ blogTag.title }}</a>
+  </div>
+</div>
+
+<div class="widget">
+  <h5 class="widget-title font-alt">Recent Comments</h5>
+  <ul class="icon-list">
+    <li *ngFor="let recentComment of recentComments">
+      {{ recentComment.title }} 
+      <a >{{ recentComment.user.firstName }} {{ recentComment.user.last }}</a>
+    </li>
+  </ul>
+</div>

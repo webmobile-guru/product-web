@@ -1,0 +1,23 @@
+<h4 class="font-alt">Login</h4>
+<hr class="divider-w mb-10">
+<form class="form" [formGroup]="loginForm">
+  <div class="form-group">
+    <input class="form-control" formControlName="email" type="text" name="username" placeholder="Username" />
+    <div class="input-err" *ngIf="isControlHasError('email','required')">
+        <strong>Email is required</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('email','email')">
+        <strong>Email is invalid</strong>
+    </div>
+  </div>
+  <div class="form-group">
+    <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password" />
+    <div class="input-err" *ngIf="isControlHasError('password','required')">
+        <strong>Password is required</strong>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-round btn-b" (click)="submit()">Login</button>
+  </div>
+  <div class="form-group"><a href="">Forgot Password?</a></div>
+</form>

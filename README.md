@@ -1,36 +1,27 @@
-# vue-i18n-starter
+# Marc
 
-> A Vue.js starter project for i18n websites
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
 
-## Build Setup
+## Development server
 
-``` bash
-# install dependencies
-npm install
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Code scaffolding
 
-# build for production with minification
-npm run build
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-# build for production and view the bundle analyzer report
-npm run build --report
+## Build
 
-# run unit tests
-npm run unit
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-# run all tests
-npm test
+## Running unit tests
 
-# sync down lokalise translation strings. You need to create acc and generate token. Not available for free plan.
-npm run lokalise:down
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-### Settings
-Default language, supported languages and fallback language can be setup inside [constants/trans.js](./src/constants/trans.js).
+## Running end-to-end tests
 
-Inside the [router/index.js](./src/router/index.js) the beforeEnter guard calls the `Trans.routeMiddleware`. That will redirect the user to a valid language route if the current one is not supported.
- 
-"# WavePlaylistVue" 
-"# vue-playlist-top-progressbar-section" 
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

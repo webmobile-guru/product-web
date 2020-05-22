@@ -1,0 +1,17 @@
+<div class="post">
+  <div class="post-thumbnail">
+    <a (click)="goBlogDetail(postData.id)"><img src="assets/images/post-1.jpg" alt="Blog-post Thumbnail" /></a>
+  </div>
+  <div class="post-header font-alt">
+    <h2 class="post-title">Title: {{postData.title}}</h2>
+    <div class="post-meta">By&nbsp;<a >{{ postData.user.username }}</a>|
+      {{ postData.publishedAt }} | {{ commentCounter }} Comments
+      <!-- | <a href="#">Photography,      </a><a href="#">Web Design</a> -->
+    </div>
+  </div>
+  <div class="post-entry" id="post-content">
+    <p style="margin-bottom: 5px;">
+      {{ postData.content }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<h4 class="font-alt">Register</h4>
+<hr class="divider-w mb-10">
+<form class="form" [formGroup]="registerForm">
+  <div class="form-group">
+    <input class="form-control" formControlName="email" type="text" name="email" placeholder="Email" />
+    <div class="input-err" *ngIf="isControlHasError('email','required')">
+        <strong>Email is required</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('email','email')">
+        <strong>Email is invalid</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('email','minlength')">
+        <strong>Email min length 3 character</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('email','maxlength')">
+        <strong>Email max lenght is 320</strong>
+    </div>
+  </div>
+  <div class="form-group">
+    <input class="form-control" formControlName="username" type="text" name="username" placeholder="Username" />
+    <div class="input-err" *ngIf="isControlHasError('username','required')">
+        <strong>User name is required</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('username','minlength')">
+        <strong>User name min length is 3</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('username','maxlength')">
+        <strong>User name max length is 100</strong>
+    </div>
+  </div>
+  <div class="form-group">
+    <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password" />
+    <div class="input-err" *ngIf="isControlHasError('password','required')">
+        <strong>Password is required</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('password','minlength')">
+        <strong>Password min length is 3</strong>
+    </div>
+    <div class="input-err" *ngIf="isControlHasError('password','maxlength')">
+        <strong>Password max length is 100</strong>
+    </div>
+  </div>
+  <div class="form-group">
+    <input class="form-control" formControlName="confirmPassword" type="password" name="confirm-password" placeholder="Confirm Password" />
+    <div class="input-err" *ngIf="isControlHasError('confirmPassword','required')">
+        <strong>Please confirm password</strong>
+    </div>
+    <!-- <div *ngIf="isControlHasError('confirmPassword','minlength')">
+        <strong>{{ 'AUTH.VALIDATION.MIN_LENGTH_FIELD' | translate }} 3</strong>
+    </div>
+    <div *ngIf="isControlHasError('confirmPassword','maxlength')">
+        <strong>{{ 'AUTH.VALIDATION.MAX_LENGTH_FIELD' | translate }} 100</strong>
+    </div> -->
+    <div class="input-err" *ngIf="registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').errors.ConfirmPassword">
+        <strong>Passsword and ConfirmPassword didn't match.</strong>
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-block btn-round btn-b" (click)="submit()">Register</button>
+  </div>
+</form>

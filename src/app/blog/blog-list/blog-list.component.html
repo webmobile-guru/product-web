@@ -1,0 +1,9 @@
+<div class="list">
+  <ul>
+    <li *ngFor="let postDataItem of postDatas | paginate: { itemsPerPage: 2, currentPage: p }">
+      <app-blog-post [postData]="postDataItem"></app-blog-post>
+    </li>
+  </ul>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
