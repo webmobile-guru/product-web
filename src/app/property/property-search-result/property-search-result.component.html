@@ -1,0 +1,323 @@
+<!-- ==========================
+    MAIN
+  =========================== -->
+
+<main *ngIf="!searchStateService.searchingProperty.value" class="listings checkListings">
+  <!-- Header -->
+  <header class="listings-header">
+
+    <!-- Container -->
+    <div class="listings-header__container">
+      <!-- Results -->
+      <div class="listings-header__results">
+
+        <p *ngIf="agentId === undefined && clickedLocations && clickedLocations.length > 0 && !checkBreadcrumbs">
+          <strong>{{searchStateService.listCount && (searchStateService.listCount.value > 0 || searchStateService.listCount.value == '500+')?searchStateService.listCount.value:0}}
+            Results</strong>
+          <span class="">
+            <span [innerHTML]="bindListingtype(commercialListingType,unitTypeSearch,setBedroom)"></span> In </span>
+          <span *ngIf="setParams">
+            <a (click)="locationSearch(clickedSlugs[0],clickedLocations[0],$event,2,
+            {loc1:clickedLocations[0]},{slug1:clickedSlugs[0]})">
+              {{clickedLocations &&  clickedLocations[0]}}
+            </a>
+
+            <a (click)="locationSearch(clickedSlugs[1],clickedLocations[1],$event,2,
+            {loc1:clickedLocations[0],loc2:clickedLocations[1]},{slug1:clickedSlugs[0],slug2:clickedSlugs[1]})">
+              {{clickedLocations &&  clickedLocations[1] && '> ' }} {{clickedLocations &&  clickedLocations[1]}}
+            </a>
+
+            <a (click)="locationSearch(clickedSlugs[2],clickedLocations[2],$event,2,
+            {loc1:clickedLocations[0],loc2:clickedLocations[1],loc3:clickedLocations[2]},
+            {slug1:clickedSlugs[0],slug2:clickedSlugs[1],slug3:clickedSlugs[2]})">
+              {{clickedLocations && clickedLocations[2] &&  '> ' }} {{clickedLocations &&  clickedLocations[2]}}
+            </a>
+
+            <a href="javascript:;">
+              {{clickedLocations && clickedLocations[3] &&  '> ' }} {{clickedLocations &&  clickedLocations[3]}}
+            </a>
+          </span>
+        </p>
+
+        <p *ngIf="agentId==undefined && !clickedLocations && !checkBreadcrumbs">
+          <strong>
+            {{searchStateService.listCount && (searchStateService.listCount.value > 0 || searchStateService.listCount.value == '500+')?searchStateService.listCount.value:0}}
+            Results</strong>
+          <span>
+            <span [innerHTML]="bindListingtype(commercialListingType,unitTypeSearch,setBedroom)"></span> <a
+              *ngIf="parentTree && parentTree !== undefined"> In
+              <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="parentTree['parent3'] && changeLocationUrl(parentTree['parent3']['slug'],'') as theUrl;">
+                {{parentTree && parentTree['parent3'] && parentTree['parent3']['name']}}
+              </a>
+
+              <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="parentTree['parent2'] && changeLocationUrl(parentTree['parent2']['slug'],parentTree['parent2']['name']) as theUrl">
+                {{parentTree && parentTree['parent3'] && '>' }}
+                {{parentTree && parentTree['parent2'] && parentTree['parent2']['name']}}
+              </a>
+
+              <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="parentTree['parent1'] && changeLocationUrl(parentTree['parent1']['slug'],parentTree['parent1']['name']) as theUrl">
+                {{parentTree && parentTree['parent2'] && '>' }}
+                {{parentTree && parentTree['parent1'] && parentTree['parent1']['name']}}
+              </a>
+              <a>
+                {{parentTree && parentTree['parent1'] && '>' }}
+                {{parentTree && parentTree['location'] && parentTree['location']['name']}}
+              </a>
+            </a>
+          </span>
+        </p>
+
+        <!-- show if multiple location filter apply (checkBreadcrumbs check added)-->
+        <p *ngIf="agentId==undefined  && checkBreadcrumbs">
+          <strong>{{searchStateService.listCount && (searchStateService.listCount.value > 0 || searchStateService.listCount.value == '500+')?searchStateService.listCount.value:0}}
+            Results</strong>
+          <span>
+            <span [innerHTML]="bindListingtype(commercialListingType,unitTypeSearch,setBedroom)"></span> <a> In
+              {{setParams}}
+            </a>
+          </span>
+        </p>
+
+        <p *ngIf="agentId!==undefined && !clickedLocations && !checkBreadcrumbs">
+          <strong>{{searchStateService.listCount && (searchStateService.listCount.value > 0 || searchStateService.listCount.value == '500+')?searchStateService.listCount.value:0}}
+            Results</strong> For agent
+          <a>{{agentName}}</a>
+        </p>
+
+      </div>
+
+      <!-- Sort -->
+        <div class="select select--sm select--with-border">
+          <svg class="listings-header__sort-toggle__icon">
+            <use xlink:href="#icon-chevron-down"></use>
+          </svg>
+
+          <select class="listings-header__sort-toggle select__input js-custom-select"
+              name="sorting" aria-label="Select sort" [(ngModel)]="searchStateService.sortBy" (change)="updateSortedData()">
+            <option class="options" *ngFor="let type of sortOptions" value="{{type.value}}">{{type.label}}</option>
+          </select>
+        </div>
+
+    </div>
+
+    <!-- Areas -->
+    <div class="listings-areas"
+      *ngIf="searchStateService.locationsProp.value && searchStateService.locationsProp.value.length">
+      <!-- Container -->
+      <ul class="listings-areas__list">
+        <li class="listings-areas__item" style="cursor: pointer;display:list-item"
+          *ngFor="let location of searchStateService.locationsProp.value |  slice:0:offset; let ind=index;">
+            <a class="listings-areas__link">
+              <a class="city" *ngIf="location && changeLocationUrl(location.slug, '1') as theUrl"
+                [routerLink]="theUrl[0]" [queryParams]="theUrl[1]">{{location.name}}</a>
+            </a>
+        </li>
+      </ul>
+      <!-- Toggle -->
+
+      <button *ngIf="searchStateService.locationsProp.value && searchStateService.locationsProp.value.length > 8"
+        class="listings-areas__view-toggle" type="button" (click)="toggleShowHide();">
+        <span class="text"> {{ offset == 8 ? 'View all' : 'Show less' }}</span>
+          <svg class="icon">
+            <use xlink:href="#icon-chevron-down"></use>
+          </svg>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- Container -->
+  <div class="listings__container">
+
+    <!-- Content -->
+    <div class="listings__content">
+
+      <!-- Inner container -->
+      <div class="listings__inner-container">
+
+        <!-- Card -->
+        <div class="listings-card" *ngFor="let property of properties">
+
+          <!-- Header -->
+          <header class="listings-card__header" [style.background-color]="getBackgroundColor(property)">
+
+            <!-- Logo -->
+            <div class="listings-card__logo">
+              <img [src]="getPropertyHeader(property)" [alt]="getAltName(property)">
+            </div>
+
+          </header>
+
+          <!-- Container -->
+          <div class="listings-card__container">
+
+            <!-- Photos -->
+            <div class="listings-card__photos swiper-container">
+
+              <!-- Wrapper -->
+              <div class="swiper-wrapper">
+                <!-- slides -->
+                <div class="swiper-slide" [style.background-image]="getSlidePhotos(property)"></div>
+
+              </div>
+
+              <!-- Pagination -->
+              <div class="slider-pagination"></div>
+
+              <!-- Verified -->
+              <div *ngIf="property.verified" class="verified listings-card__verified">
+                <svg class="verified__icon icon">
+                  <use xlink:href="#icon-check"></use>
+                </svg>
+                <div class="verified__text">Verified listing</div>
+              </div>
+
+            </div>
+
+            <!-- Content -->
+            <div class="listings-card__content">
+
+              <!-- Agent -->
+              <!-- <div class="listings-card__agent" style="background-image:url('assets/pic/agent-photo.jpg');"
+                    aria-label="Agent Name"></div> -->
+              <div class="listings-card__agent" [style.background-image]="getAgentImage(property)"
+                aria-label="Agent Name">
+              </div>
+
+              <!-- Title -->
+              <div class="listings-card__title">
+                <a routerLink="{{ property.url }}">{{property && property.title}}</a>
+              </div>
+
+              <!-- Location -->
+              <div class="listings-card__location">
+                <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="changeLocationUrl(property.location1.slug,property.location1.name) as theUrl">
+                  {{property && property.location1 && property.location1.name ? property && property.location1 && property.location1.name + ' > ' : '' }}
+                </a>
+                <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="changeLocationUrl(property.location2.slug,property.location2.name) as theUrl">
+                  {{property && property.location2 && property.location2.name ? property && property.location2 && property.location2.name + ' > ' : '' }}
+                </a>
+                <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="property.location3 && changeLocationUrl(property.location3.slug,property.location3.name) as theUrl">
+                  {{property && property.location3 && property.location3.name ? property && property.location3 && property.location3.name + ' > ' : '' }}
+                </a>
+                <a [routerLink]="theUrl[0]" [queryParams]="theUrl[1]" *ngIf="property.location4 && changeLocationUrl(property.location4.slug,property.location4.name) as theUrl">
+                  {{property && property.location4 && property.location4.name }}
+                </a>
+              </div>
+
+              <!-- Meta -->
+              <div class=" listings-card__meta">
+
+                  <!-- Price -->
+                  <div class="listings-card__price">
+                    <span class="currency">AED </span>
+                    <span class="value">{{formatNumber(property.price)}}</span>
+                    <span *ngIf="property.rentalLength">{{ property.rentalLength | rentalLength }}</span>
+                  </div>
+
+                  <!-- Premium | featured -->
+                  <div class="listings-card__label listings-card__label--premium" *ngIf="property.premium">Premium</div>
+                  <div class="listings-card__label listings-card__label--premium" *ngIf="property.featured">Featured
+                  </div>
+
+              </div>
+
+              <!-- Summary -->
+              <ul class="listings-card__summary">
+                <li *ngIf="property.listingType !== 'COMMERCIAL_RENT' && property.listingType !== 'COMMERCIAL_SALE'">
+                  <ng-container *ngIf="property.bedrooms > 0">{{property.bedrooms}} Bedrooms</ng-container>
+                  <ng-container *ngIf="property.bedrooms === 0">Studio</ng-container>
+                </li>
+                <li class="commercial-transform"
+                  *ngIf="property.listingType === 'COMMERCIAL_RENT' || property.listingType === 'COMMERCIAL_SALE'">
+                  {{changeUnitType(property.unitType)}}</li>
+                <li>/</li>
+                <li *ngIf="property.listingType !== 'COMMERCIAL_RENT' && property.listingType !== 'COMMERCIAL_SALE'">
+                  {{property.bathrooms}} Bathrooms</li>
+                <li *ngIf="property.listingType !== 'COMMERCIAL_RENT' && property.listingType !== 'COMMERCIAL_SALE'">/
+                </li>
+                <li>{{property.sizeSQFT | number:'1.0-0' }} sq.ft.</li>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Card if not found any property-->
+        <div class="listings-card" *ngIf="properties && !properties.length">
+          <div class="listings-card__container">
+            <div class="listings-card__content">
+              <h1>No Properties Found!</h1>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Load more button -->
+      <button class="listings__load-more-btn btn btn--sm btn--primary" type="button"
+        *ngIf="properties && properties.length % 25 === 0 && properties.length && agentId===undefined"
+        (click)="loadMore()"><i class="fa fa-spinner fa-spin" *ngIf="searchStateService.isLoading.value"></i> Load
+        more</button>
+
+      <button class="listings__load-more-btn btn btn--sm btn--primary" type="button"
+        *ngIf="properties && properties.length % 25 === 0 && properties.length && agentId!==undefined"
+        (click)="loadMoreAgentProperties()">Load Properties</button>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="listings__sidebar">
+      <!-- Ad -->
+      <div class="listings__ad">
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<!-- Mockup loading grey placeholder -->
+<main *ngIf="searchStateService.searchingProperty.value" class="listings">
+  <div class="timeline-item">
+    <div class="animated-background">
+      <div class="background-masker header-top"></div>
+      <div class="background-masker left-image"></div>
+      <div class="background-masker header-agent-left"></div>
+      <div class="background-masker header-agent-right"></div>
+      <div class="background-masker content-agent"></div>
+    </div>
+    <div class="animated-background" style="margin-top:30px">
+      <div class="background-masker header-top"></div>
+      <div class="background-masker left-image"></div>
+      <div class="background-masker header-agent-left"></div>
+      <div class="background-masker header-agent-right"></div>
+      <div class="background-masker content-agent"></div>
+    </div>
+    <div class="animated-background" style="margin-top:30px">
+      <div class="background-masker header-top"></div>
+      <div class="background-masker left-image"></div>
+      <div class="background-masker header-agent-left"></div>
+      <div class="background-masker header-agent-right"></div>
+      <div class="background-masker content-agent"></div>
+    </div>
+    <div class="animated-background" style="margin-top:30px">
+      <div class="background-masker header-top"></div>
+      <div class="background-masker left-image"></div>
+      <div class="background-masker header-agent-left"></div>
+      <div class="background-masker header-agent-right"></div>
+      <div class="background-masker content-agent"></div>
+    </div>
+    <div class="animated-background" style="margin-top:30px">
+      <div class="background-masker header-top"></div>
+      <div class="background-masker left-image"></div>
+      <div class="background-masker header-agent-left"></div>
+      <div class="background-masker header-agent-right"></div>
+      <div class="background-masker content-agent"></div>
+    </div>
+  </div>
+</main>

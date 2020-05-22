@@ -1,0 +1,253 @@
+
+/*
+================================================================================
+
+  Footer
+
+================================================================================
+*/
+
+.footer {
+  @include no-shrink;
+
+  &__container {
+    @include container;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  &__copyright {
+    @include clear-children-margins;
+    margin-top: -2rem;
+    font-size: 1.6rem;
+    line-height: (22/16);
+  }
+
+  &__actions {
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 100%;
+    max-width: 27.2rem;
+  }
+}
+
+
+
+/* Navigation
+------------------------------------ */
+
+.footer-nav {
+
+  &__list {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    margin-right: 2rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    color: $text-color;
+    font-size: 1.6rem;
+    line-height: (22/16);
+    text-decoration: none;
+    transition: $default-transition;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+
+
+/* Social
+------------------------------------ */
+
+.footer-social {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0;
+  margin-bottom: 2.6rem;
+  padding-left: 0;
+  list-style-type: none;
+
+  &__item {
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid $bd-color;
+    border-radius: 50%;
+    transition: $default-transition;
+
+    &:hover {
+      border-color: $primary-color;
+
+      // Icon
+      .footer-social__icon {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  &__icon {
+    fill: $text-color;
+    transition: $default-transition;
+
+
+    // Facebook modifier
+    &--facebook {
+      width: 1.1rem;
+      height: 2.3rem;
+    }
+
+    // Twitter modifier
+    &--twitter {
+      width: 2rem;
+      height: 1.6rem;
+    }
+
+    // Pinterest modifier
+    &--pinterest {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    // LinkedIn modifier
+    &--linkedin {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    // YouTube modifier
+    &--youtube {
+      width: 2rem;
+      height: 1.4rem;
+    }
+  }
+}
+
+
+
+/* Alerts
+------------------------------------ */
+
+.footer-alerts {
+  text-align: center;
+
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    line-height: (22/16);
+  }
+
+  &__btn {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/* ================================================================================
+   RESPONSIVENESS
+================================================================================ */
+
+// Until 1024px
+@include mq($until: mq1024px) {
+
+  // Footer
+  .footer {
+
+    &__container {
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
+    &__copyright {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    &__actions {
+      margin-bottom: 3rem;
+      margin-left: 0;
+    }
+  }
+
+  // Navigation
+  .footer-nav {
+    margin-bottom: 3rem;
+  }
+
+}
+
+
+// Until 768px
+@include mq($until: mq768px) {
+
+  // Footer
+  .footer {
+
+    // With mobile actions modifier
+    &--with-mob-actions {
+
+      // Container
+      .footer__container {
+        padding-bottom: 8rem;
+      }
+    }
+  }
+
+  // Navigation
+  .footer-nav {
+
+    &__list {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__item {
+      margin-bottom: 2rem;
+      margin-right: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
+
+
+// Until 414px
+@include mq($until: mq414px) {
+
+  // Footer
+  .footer {
+
+    &__copyright {
+      font-size: 1.4rem;
+      line-height: (22/14);
+    }
+  }
+
+}

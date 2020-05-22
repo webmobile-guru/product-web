@@ -1,0 +1,20 @@
+.dropdown-search{
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.18);
+    padding: 5px 10px;
+    height: 250px;
+    overflow: auto;
+  }
+  
+  .custom-select__dropdown {
+    bottom: unset !important;
+    top: unset;
+    height: 200px;
+    overflow: auto !important;
+  }
+  
+  .select__input{
+    text-indent: 0 !important;
+  }

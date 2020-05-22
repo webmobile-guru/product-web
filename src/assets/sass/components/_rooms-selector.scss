@@ -1,0 +1,190 @@
+
+/*
+================================================================================
+
+  "Rooms Selector" component
+
+================================================================================
+*/
+
+.rooms-selector {
+  display: flex;
+  align-items: center;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  height: 3.8rem;
+  border: 1px solid $title-color;
+  border-radius: 0.5rem;
+
+  &__icon {
+    flex-shrink: 0;
+    margin-right: 1.2rem;
+    width: 2.5rem;
+    height: 1.9rem;
+    fill: $title-color;
+  }
+
+  &__container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+
+
+    // Studio modifier
+    &--studio {
+
+      // Label
+      .rooms-selector__label {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        width: auto;
+      }
+    }
+  }
+
+  &__input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    &:checked {
+
+      & + .rooms-selector__label {
+        background-color: rgba($primary-color, 0.2);
+      }
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    width: 4.2rem;
+    height: 2.6rem;
+    background-color: transparent;
+    border: 0.2rem solid transparent;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 2.2rem;
+    text-align: center;
+    transition: $default-transition;
+    cursor: pointer;
+    
+    @media (hover: hover) {
+      &:hover {
+        border-color: rgba($primary-color, 0.3);
+      }
+
+      &:active {
+        border-color: rgba($primary-color, 0.35);
+      }
+    }
+
+
+    // Plus sign
+    & > .plus {
+      display: none;
+    }
+  }
+}
+
+
+
+
+
+
+/* ================================================================================
+   RESPONSIVENESS
+================================================================================ */
+
+// Until 480px
+@include mq($until: mq480px) {
+
+  // Rooms selector
+  .rooms-selector {
+
+    &__item {
+
+      &:nth-child(6) {
+
+        // Label
+        .rooms-selector__label {
+
+          // Plus sign
+          & > .plus {
+            display: initial;
+          }
+        }
+      }
+
+      &:nth-child(7),
+      &:nth-child(8) {
+        display: none;
+      }
+    }
+  }
+
+}
+
+
+// Until 414px
+@include mq($until: mq414px) {
+
+  // Rooms selector
+  .rooms-selector {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &__icon {
+      margin-right: 1rem;
+      width: 2.2rem;
+      height: 1.6rem;
+    }
+
+    &__input {
+
+      &:focus {
+        & + .rooms-selector__label {
+          box-shadow: none;
+        }
+      }
+    }
+
+    &__label {
+      width: 3.8rem;
+    }
+  }
+
+}
+
+
+// Until 375px
+@include mq($until: mq375px) {
+
+  // Rooms selector
+  .rooms-selector {
+
+    &__item {
+
+      &:nth-child(5) {
+
+        // Label
+        .rooms-selector__label {
+
+          // Plus sign
+          & > .plus {
+            display: initial;
+          }
+        }
+      }
+
+      &:nth-child(6) {
+        display: none;
+      }
+    }
+  }
+
+}

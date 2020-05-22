@@ -1,0 +1,180 @@
+/*
+================================================================================
+
+  "Custom Select" plugin styles
+
+================================================================================
+*/
+
+.custom-select {
+  position: relative;
+}
+
+.custom-select__option {
+  overflow: hidden;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  font-family: inherit;
+  white-space: nowrap;
+  text-align: left;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  user-select: none;
+  appearance: none;
+}
+
+.custom-select__option-wrap {
+  position: relative;
+}
+
+.custom-select__input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border-width: 1px 0;
+  border-style: solid;
+  border-radius: 0;
+  font-family: inherit;
+  appearance: none;
+}
+
+.custom-select__dropdown {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  top: 100%;
+  left: 0;
+}
+
+
+/*
+ * Custom Select jQuery Plugin Theme
+ */
+.custom-select__option {
+  position: relative;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+  color: $text-color;
+  font-size: 1.6rem;
+  transition: $default-transition;
+
+  &:hover {
+    background-color: rgba($primary-color, 0.1);
+  }
+}
+
+.custom-select__option:focus {
+  outline: none;
+}
+
+.custom-select__option--value {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 1.2rem;
+  padding-right: 3.6rem;
+  width: 100%;
+  height: 3.8rem;
+  color: $title-color;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0.5rem;
+  outline: 0;
+  font-size: 1.6rem;
+  line-height: normal;
+  transition: $default-transition;
+  appearance: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+  }
+
+  &:focus {
+    border-color: $primary-color;
+    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.2);
+  }
+}
+
+.custom-select--dropup.custom-select--active .custom-select__option--value {
+  border-top-color: transparent;
+  border-bottom-color: #e6e6e6;
+  border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.custom-select__option--selected {
+  background-color: #fcfcfc;
+}
+
+.custom-select__option[disabled] {
+  color: #a1a1a1;
+  cursor: default;
+}
+
+.custom-select__option[disabled]:hover, .custom-select__option[disabled]:focus {
+  background-color: transparent;
+}
+
+.custom-select__option-wrap {
+  overflow-y: auto;
+  max-height: 11.25rem;
+}
+
+.custom-select__option-wrap::-webkit-scrollbar {
+  width: 16px;
+}
+
+.custom-select__option-wrap::-webkit-scrollbar-thumb {
+  background-color: #e6e6e6;
+  background-clip: padding-box;
+  border-width: 0 4px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.custom-select__input {
+  position: relative;
+  z-index: 1;
+  height: 2.25rem;
+  margin-top: -1px;
+  padding: 0 0.75rem;
+  border-color: #e6e6e6;
+  transform: translateY(1px);
+  font-size: 1rem;
+  color: #212121;
+}
+
+.custom-select__input:focus {
+  outline: none;
+}
+
+.custom-select--dropup .custom-select__input {
+  border-top-width: 0;
+  margin-top: 0;
+  transform: translateY(0);
+}
+
+.custom-select__dropdown {
+  z-index: 11;
+  overflow: hidden;
+  top: calc(100% - 1px);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+}
+
+.custom-select--dropup .custom-select__dropdown {
+  bottom: calc(100% - 1px);
+  border-width: 1px 1px 0;
+  border-radius: 0.25rem 0.25rem 0 0;
+}

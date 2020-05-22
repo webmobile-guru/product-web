@@ -1,0 +1,148 @@
+
+/*
+================================================================================
+
+  "Popular" section
+
+================================================================================
+*/
+
+.popular {
+  @include no-shrink;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background-color: #f8f8f8;
+
+  &__container {
+    @include container;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__section {
+    margin-right: 5rem;
+    text-align: center;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 3rem;
+    color: $title-color;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: (24/20);
+  }
+
+  &__list {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    margin-bottom: 0.6rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__link {
+    color: $text-color;
+    font-size: 1.3rem;
+    line-height: (15/13);
+    text-decoration: none;
+    transition: $default-transition;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+
+
+
+
+
+/* ================================================================================
+   RESPONSIVENESS
+================================================================================ */
+
+// Until 1024px
+@include mq($until: mq1024px) {
+
+  // Popular
+  .popular {
+
+    &__container {
+      flex-wrap: wrap;
+      max-width: 80rem;
+    }
+
+    &__section {
+      margin-bottom: 5rem;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      width: 50%;
+      margin-right: 0;
+
+      &:nth-last-child(-n+2) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}
+
+
+// Until 768px
+@include mq($until: mq768px) {
+
+  // Popular
+  .popular {
+
+    &__container {
+      max-width: 40rem;
+    }
+
+    &__section {
+      margin-bottom: 4rem;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      margin-right: 0;
+
+      &:nth-last-child(-n+2) {
+        margin-bottom: 4rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__title {
+      margin-bottom: 2rem;
+    }
+  }
+
+}
+
+
+// Until 414px
+@include mq($until: mq414px) {
+
+  // Popular
+  .popular {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+}

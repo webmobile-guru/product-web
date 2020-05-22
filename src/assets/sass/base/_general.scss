@@ -1,0 +1,30 @@
+
+/*
+================================================================================
+
+  General
+
+================================================================================
+*/
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  @include font-smoothing;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: $text-color;
+  font-family: $montserrat-font-stack;
+}

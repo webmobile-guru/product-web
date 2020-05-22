@@ -1,0 +1,696 @@
+<!-- Mockup loading grey placeholder -->
+<main *ngIf="property && !property._id" class="detail">
+  <div class="timeline-item">
+    <div class="animated-background">
+      <div class="background-masker header-top"></div>
+    </div>
+  </div>
+</main>
+
+<main class="detail" *ngIf="property && property._id">
+
+    <!-- Meta -->
+    <div class="detail-meta">
+
+      <!-- Container -->
+      <div class="detail-meta__container">
+
+        <!-- Back link -->
+        <a class="detail-meta__back-link" style="cursor: pointer" (click)="location.back()" title="Back">
+          <svg class="icon">
+            <use xlink:href="#icon-chevron-left"></use>
+          </svg>
+        </a>
+
+        <!-- Breadcrumbs -->
+        <ul class="detail-meta__breadcrumbs breadcrumbs">
+          <li class="breadcrumbs__item" *ngIf="property && property.location1">
+            <a class="breadcrumbs__link cursor-breadcrumb"
+              [routerLink]="getLocationUrl(property.location1.slug, property.listingType)">{{property.location1 && property.location1.name}}</a>
+          </li>
+
+          <li class="breadcrumbs__item" *ngIf="property && property.location2">
+            <a class="breadcrumbs__link cursor-breadcrumb"
+              [routerLink]="getLocationUrl(property.location2.slug, property.listingType)">{{property.location2 && property.location2.name}}</a>
+          </li>
+
+          <li class="breadcrumbs__item" *ngIf="property && property.location3">
+            <a class="breadcrumbs__link cursor-breadcrumb"
+              [routerLink]="getLocationUrl(property.location3.slug,property.listingType)">{{property.location3 && property.location3.name}}</a>
+          </li>
+
+          <li class="breadcrumbs__item" *ngIf="property && property.location4">
+            <a class="breadcrumbs__link cursor-breadcrumb"
+              [routerLink]="getLocationUrl(property.location4.slug,property.listingType)">{{property.location4 && property.location4.name}}</a>
+          </li>
+        </ul>
+
+        <!-- Date -->
+        <time class="detail-meta__date" datetime="2019-01-01">Listed: {{property.createdAt | timeAgo}}</time>
+
+      </div>
+
+    </div>
+
+    <!-- Main -->
+    <div class="detail-main">
+
+      <!-- Header -->
+      <header class="detail-main__header">
+
+        <!-- Title -->
+        <h1 class="detail-main__title">
+            {{property && property.title}}
+        </h1>
+
+        <!-- Price -->
+        <div class="detail-main__price">
+          <span class="currency">AED</span>
+          <span class="value">{{formatNumber(property.price)}}</span>
+          <span *ngIf="property.rentalLength">{{ property.rentalLength | rentalLength }}</span>
+        </div>
+
+      </header>
+
+      <!-- Container -->
+      <div class="detail-main__container" *ngIf="property && property.photos && property.photos.length">
+
+        <!-- Content -->
+        <div class="detail-content" >
+
+          <!-- Photos -->
+          <div class="detail-photos" >
+
+            <!-- Main slider -->
+            <div class="detail-photos__main-slider swiper-container">
+
+              <!-- Wrapper -->
+              <div class="swiper-wrapper">
+
+                <!-- Slides -->
+                <div class="swiper-slide" *ngFor="let photo of property && property.photos">
+                    <div class="detail-photos__item" [style.background-image]="getSlidePhotosLarge(photo)"></div>
+                </div>
+
+              </div>
+
+              <!-- Save (add `detail-photos__save-btn--active` class when saved) -->
+              <button class="detail-photos__save-btn" type="button">
+                <svg class="icon">
+                    <use xlink:href="#icon-heart"></use>
+                  <!-- <use xlink:href="#icon-heart-fill"></use> -->
+                </svg>
+              </button>
+
+              <!-- Verified -->
+              <div class="verified detail-photos__verified" *ngIf="property && property.verified">
+                <svg class="verified__icon icon">
+                  <use xlink:href="#icon-check"></use>
+                </svg>
+                <div class="verified__text">Verified listing</div>
+              </div>
+
+              <!-- Pagination -->
+              <div class="detail-photos__pagination slider-pagination slider-pagination--lg"></div>
+
+              <!-- Previous button -->
+              <button class="slider-nav-btn slider-nav-btn--lg slider-nav-btn--prev" type="button">
+                <svg class="icon">
+                  <use xlink:href="#icon-chevron-left"></use>
+                </svg>
+              </button>
+
+              <!-- Next button -->
+              <button class="slider-nav-btn slider-nav-btn--lg slider-nav-btn--next" type="button">
+                <svg class="icon">
+                  <use xlink:href="#icon-chevron-right"></use>
+                </svg>
+              </button>
+
+            </div>
+
+            <!-- Thumbs slider -->
+            <div  class="detail-photos__thumbs-slider swiper-container">
+
+              <!-- Wrapper -->
+              <div class="swiper-wrapper swiper-wrapper-load swiperHide">
+
+                <div class="swiper-slide" *ngFor="let photo of property && property.photos">
+                  <div class="detail-photos__thumb-item" [style.background-image]="getSlidePhotosThumb(photo)"></div>
+                </div>
+
+              </div>
+
+              <div class="swiper-wrapper-new swiper-wrapper-skeleton-new">
+                  <div class="swiper-slide-new" *ngFor="let dummy of ' '.repeat(10).split(''), let x = index">
+                    <div class="detail-photos__thumb-item-new"></div>
+                  </div>
+              </div>
+
+              <!-- Previous button -->
+              <button class="slider-nav-btn slider-nav-btn--sm slider-nav-btn--prev" type="button">
+                <svg class="icon">
+                  <use xlink:href="#icon-chevron-left"></use>
+                </svg>
+              </button>
+
+              <!-- Next button -->
+              <button class="slider-nav-btn slider-nav-btn--sm slider-nav-btn--next" type="button">
+                <svg class="icon">
+                  <use xlink:href="#icon-chevron-right"></use>
+                </svg>
+              </button>
+
+            </div>
+
+            <!-- Price -->
+            <div class="detail-photos__price">
+              <div class="detail-photos__price-container">
+                <span class="currency">AED</span>
+                <span class="value">{{formatNumber(property.price)}}</span>
+                <span *ngIf="property.rentalLength">{{ property.rentalLength | rentalLength }}</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Summary -->
+          <ul class="detail-summary">
+            <li class="detail-summary__item" *ngIf="property.bedrooms !== null">
+              <svg class="detail-summary__icon detail-summary__icon--bed icon">
+                <use xlink:href="#icon-bed"></use>
+              </svg>
+              <span class="detail-summary__text" *ngIf="property.bedrooms > 0">
+                  {{property.bedrooms}} <span class="desktop">Bedrooms</span>
+              </span>
+              <span class="detail-summary__text" *ngIf="property.bedrooms === 0">
+                  <span class="desktop">Studio</span>
+              </span>
+            </li>
+
+            <li class="detail-summary__item" *ngIf="property.bathrooms">
+              <svg class="detail-summary__icon detail-summary__icon--bath icon">
+                <use xlink:href="#icon-bath"></use>
+              </svg>
+              <span class="detail-summary__text">
+                  {{property.bathrooms}} <span class="desktop">Bathrooms</span>
+              </span>
+            </li>
+
+            <li class="detail-summary__item">
+              <svg class="detail-summary__icon detail-summary__icon--area icon">
+                <use xlink:href="#icon-area"></use>
+              </svg>
+              <span class="detail-summary__text">{{property.sizeSQFT | number: '1.0-0'}} sq.ft.</span>
+            </li>
+          </ul>
+
+          <!-- Info -->
+          <div class="detail-info">
+
+            <!-- Header -->
+            <header class="detail-info__header">
+
+              <!-- Title -->
+              <h2 class="detail-info__title">Property details</h2>
+
+            </header>
+
+            <!-- Container -->
+            <div class="detail-info__container">
+
+              <!-- Table -->
+              <table class="detail-info__table">
+                <tr>
+                  <td>Price:</td>
+                  <td>AED {{formatNumber(property.price)}} {{property.rentalLength | rentalLength }}</td>
+                </tr>
+
+                <tr>
+                  <td>Reference No:</td>
+                  <td>{{property.reference}}</td>
+                </tr>
+
+                <tr *ngIf="property.bedrooms !== null">
+                  <td>Bedrooms:</td>
+                  <td *ngIf="property.bedrooms > 0">{{property.bedrooms}}</td>
+                  <td *ngIf="property.bedrooms === 0"> Studio </td>
+                </tr>
+
+                <tr>
+                  <td>Size:</td>
+                  <td>{{property.sizeSQFT | number:'1.0-0'}} sq.ft.</td>
+                </tr>
+              </table>
+
+              <!-- Table -->
+              <table class="detail-info__table">
+                <tr>
+                  <td>Type:</td>
+                  <td>{{property && property.unitType}}</td>
+                </tr>
+
+                <tr>
+                  <td>RERA No:</td>
+                  <td>{{property && property.permitNumber}}</td>
+                </tr>
+
+                <tr>
+                  <td>Furnishings:</td>
+                  <td>{{property && property.furnishedType === 'UNFURNISHED' ? 'NO' : 'YES'}}</td>
+                </tr>
+
+                <tr *ngIf="property.bathrooms">
+                  <td>Bathrooms:</td>
+                  <td>{{property.bathrooms}}</td>
+                </tr>
+
+                <tr>
+                  <td>Parking:</td>
+                  <td>Yes</td>
+                </tr>
+              </table>
+
+            </div>
+
+            <!-- Mobile actions -->
+            <div class="detail-info__actions">
+
+              <!-- Description -->
+              <a class="btn btn--sm btn--primary-ghost"  (click)="setScroll(1)">
+                Read description
+              </a>
+
+              <!-- View on -->
+              <a class="btn btn--sm btn--primary-ghost" (click)="setScroll(2)">
+                View on map
+              </a>
+
+            </div>
+
+            <!-- Text -->
+            <div class="detail-info-text" id="description">
+
+              <!-- Container -->
+              <div class="detail-info-text__container" [class.show]="visible">
+                  <p>{{property && property.description}}</p>
+              </div>
+
+              <!-- Read more -->
+              <!-- <button class="detail-info-text__read-more-btn" type="button">Read more</button> -->
+              <button  [ngClass]="[visible ? 'less' : 'more']" class="detail-info-text__read-more-btn" type="button" (click)="visible = !visible">{{ visible ? 'Show less': 'Read more' }}</button>
+            </div>
+
+          </div>
+
+          <!-- Benefits -->
+          <div class="detail-benefits" *ngIf="property.amenities && property.amenities !=''">
+            <!-- Header -->
+            <header class="detail-benefits__header">
+              <!-- Title -->
+              <h2 class="detail-benefits__title">Facilities and Amenities</h2>
+
+            </header>
+
+            <!-- Container -->
+            <ul class="detail-benefits__list" >
+              <li class="detail-benefits__item" *ngFor="let ameniti of property.amenities">
+                <span class="detail-benefits__icon">
+                  <svg class="icon">
+                    <use xlink:href="#icon-check"></use>
+                  </svg>
+                </span>
+                <span class="detail-benefits__text" [innerHtml]="amenitiesListing(ameniti)"></span>
+              </li>
+            </ul>
+
+          </div>
+
+          <!-- Map -->
+          <div class="detail-map" id="map">
+
+            <!-- Container -->
+            <div class="detail-map__container">
+              <agm-map [zoom]="15"  *ngIf="showMap"
+                [latitude]="property.geoPoint.coordinates[0]"
+                [longitude]="property.geoPoint.coordinates[1]">
+                <agm-marker [latitude]="property.geoPoint.coordinates[0]" [longitude]="property.geoPoint.coordinates[1]"></agm-marker>
+              </agm-map>
+
+              <img *ngIf="!showMap" src="assets/pic/detail-map.png" srcset="assets/pic/detail-map@2x.png 2x" alt="" />
+            </div>
+
+            <!-- Discover button -->
+            <button *ngIf="!showMap" class="btn btn--sm btn--primary-gradient detail-map__btn" type="button" (click)="checkMap()">
+              Show on map
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="detail-sidebar">
+
+          <!-- Left part -->
+          <div class="detail-sidebar__left-part">
+
+            <!-- Agent -->
+            <div class="detail-agent">
+
+              <!-- Header -->
+              <header class="detail-agent__header detail-agent__header--agency-example" [style.background-color]="property.agency.bgColor">
+
+                <!-- Logo -->
+                <div class="detail-agent__logo">
+                    <img [src]="getPropertyHeader(property)" alt="Betterhomes">
+                </div>
+
+                <!-- Agent -->
+                <div class="detail-agent__agent" [style.background-image]="getAgentImage(property)" aria-label="Agent Name"></div>
+
+              </header>
+
+              <!-- Content -->
+              <div class="detail-agent__content">
+
+                <!-- Summary -->
+                <ul class="detail-agent__summary">
+                  <li>Agent:
+                    <a routerLink="/agent/{{property && property.agent && property.agent._id }}">
+                      {{property.agent && property.agent.name }}</a>
+                  </li>
+                  <li>Agency: {{property.agency && property.agency.name }}</li>
+                  <li>RERA: {{property.agency && property.agency.reraId }}</li>
+                  <li>PERMIT: {{property && property.permitNumber }}</li>
+                </ul>
+
+                <!-- View all listings -->
+                <div class="detail-agent__additional">
+                  <a class="detail-agent__view-all" href="javascript:;">View all listings</a>
+                  <div class="detail-agent__ref">Ref: <strong>{{property && property.reference }}</strong></div>
+                </div>
+
+                <!-- Actions -->
+                <div class="detail-agent__actions">
+
+                    <!-- Call button -->
+                  <button *ngIf="!device && !showPhone " (click)="revealPhone()"
+                    class="detail-agent__btn btn btn--sm btn--primary-gradient">
+                      Call agent
+                  </button>
+
+                  <button *ngIf="device && !showPhone"
+                  class="detail-agent__btn btn btn--sm btn--primary-gradient">
+                    <a [href]="property && property.agent && 'tel:'+property.agent.phone">Call agent</a>
+                  </button>
+
+                  <button *ngIf="showPhone" class="detail-agent__btn btn btn--sm btn--primary-gradient">
+                    +{{property && property.agent && property.agent.phone }}</button>
+
+                  <!-- Email button -->
+                  <button class="detail-agent__btn btn btn--sm btn--primary-gradient js-open-email-popup"
+                    type="button">Email agent</button>
+
+                  <!-- Whatsapp button -->
+                  <button *ngIf="isMobileNumber()" class="detail-agent__btn btn btn--sm btn--green"
+                    (click)="sendWhatsApp()">Whatsapp agent</button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right part -->
+          <div class="detail-sidebar__right-part">
+
+            <!-- Share -->
+            <div class="detail-share">
+
+              <!-- Title -->
+              <div class="detail-share__title">Share:</div>
+
+              <!-- Container -->
+              <ul class="detail-share__container">
+                <li class="detail-share__item">
+                  <a class="detail-share__link" target="_blank" rel="noopener" aria-label="Share via Facebook">
+                    <svg class="detail-share__icon detail-share__icon--facebook icon">
+                      <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+
+                <li class="detail-share__item">
+                  <a class="detail-share__link" target="_blank" rel="noopener" aria-label="Share via LinkedIn">
+                    <svg class="detail-share__icon detail-share__icon--linkedin icon">
+                      <use xlink:href="#icon-linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+
+                <li class="detail-share__item">
+                  <a class="detail-share__link" target="_blank" rel="noopener" aria-label="Share via Whatsapp">
+                    <svg class="detail-share__icon detail-share__icon--whatsapp icon">
+                      <use xlink:href="#icon-whatsapp"></use>
+                    </svg>
+                  </a>
+                </li>
+
+                <li class="detail-share__item">
+                  <a class="detail-share__link" target="_blank" rel="noopener" aria-label="Share via Email">
+                    <svg class="detail-share__icon detail-share__icon--email icon">
+                      <use xlink:href="#icon-email"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+
+            <!-- Save -->
+            <button class="detail-save" type="button">
+
+              <!-- Icon -->
+              <svg class="detail-save__icon icon">
+                <use xlink:href="#icon-heart"></use>
+              </svg>
+
+              <!-- Text -->
+              <span class="detail-save__text">Save property now</span>
+
+            </button>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </div>
+
+</main>
+
+
+<!-- ==========================
+      SIMILAR
+    =========================== -->
+
+    <!-- Similar-properties data -->
+    <section class="trending" *ngIf="similarProperties.length">
+        <div class="trending__container">
+          <header class="trending__header">
+            <h2 class="trending__title">Similar properties</h2>
+          </header>
+          <div class="trending__slider swiper-container">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide" *ngFor="let propertyData of similarProperties">
+
+                <div class="trending-card">
+
+                  <header class="trending-card__header" [style.background-color]="getBackgroundColor(propertyData)">
+
+                    <div class="trending-card__logo trending-card__logo_test">
+                      <img [src]="getPropertyHeader(propertyData)" alt="Betterhomes">
+                    </div>
+                    <div class="trending-card__agent" [style.background-image]="getAgentImage(propertyData)"
+                      aria-label="Agent Name"></div>
+                  </header>
+
+                  <div class="trending-card__photos swiper-container">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide" [style.background-image]="getSlidePhotos(propertyData)"></div>
+                    </div>
+
+                    <div class="slider-pagination"></div>
+                      <div *ngIf="propertyData.verified" class="verified trending-card__verified">
+                        <svg class="verified__icon icon">
+                          <use xlink:href="#icon-check"></use>
+                        </svg>
+                        <div class="verified__text">Verified listing</div>
+                      </div>
+
+                  </div>
+
+                  <div class="trending-card__content">
+
+                    <div class="trending-card__title">
+                        <a [routerLink]="propertyData?.url" >{{propertyData && propertyData.title}}</a>
+                    </div>
+
+                    <div class="trending-card__location">
+                      {{propertyData && propertyData.location1 && propertyData.location1.name ? propertyData && propertyData.location1 && propertyData.location1.name + ' > ' : '' }}
+                      {{propertyData && propertyData.location2 && propertyData.location2.name ? propertyData && propertyData.location2 && propertyData.location2.name + ' > ' : '' }}
+                      {{propertyData && propertyData.location3 && propertyData.location3.name ? propertyData && propertyData.location3 && propertyData.location3.name + ' > ' : '' }}
+                      {{propertyData && propertyData.location4 && propertyData.location4.name }}
+                    </div>
+
+                    <div class="trending-card__meta">
+
+                      <div class="trending-card__price">
+                        <span class="currency">AED </span>
+                        <span class="value">{{formatNumber(propertyData.price)}}</span>
+                        <span *ngIf="propertyData.rentalLength">{{ propertyData.rentalLength | rentalLength }}</span>
+                      </div>
+
+                      <div class="trending-card__label" *ngIf="propertyData.premium">Premium</div>
+                      <div class="trending-card__label" *ngIf="propertyData.featured">Featured</div>
+                    </div>
+
+                    <ul class="trending-card__summary">
+                      <li>{{propertyData.bedrooms}} Bedrooms</li>
+                      <li>/</li>
+                      <li>{{propertyData.bathrooms}} Bathrooms</li>
+                      <li>/</li>
+                      <li>{{propertyData.sizeSQFT | number:'1.0-0'}} sq.ft.</li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- Placeholder classes for load script if not any similarProperties -->
+    <section class="trending mb-0" *ngIf="!similarProperties.length && similarPropertiesFetch">
+      <div class="trending-card__logo trending-card__logo_test" [style.height]="0"></div>
+    </section>
+
+        <!-- ==========================
+          MOBILE ACTIONS
+        =========================== -->
+      <div class="mob-detail-actions">
+        <!-- Call button -->
+
+        <a class="mob-detail-actions__btn btn btn--xs btn--primary-gradient" href="javascript:;" *ngIf="!showPhone && !device"
+          (click)="revealPhone()">Call agent</a>
+
+        <a class="mob-detail-actions__btn btn btn--xs btn--primary-gradient callagent" *ngIf="!showPhone && device" [href]="property && property.agent && 'tel:'+property.agent.phone" [ngClass]="[!isMobileNumber() ? 'align' : 'non-align']">Call agent</a>
+
+        <a class="mob-detail-actions__btn btn btn--xs btn--primary-gradient" href="javascript:;" *ngIf="showPhone && !device">Called
+          {{property && property.agent && property.agent.phone }}</a>
+
+        <!-- Whatsapp button -->
+        <a class="mob-detail-actions__btn btn btn--xs btn--green" *ngIf="isMobileNumber()"
+        (click)="sendWhatsApp()">Whatsapp</a>
+
+        <!-- Email button -->
+        <button class="mob-detail-actions__btn btn btn--xs btn--primary-gradient js-open-email-popup" type="button"
+        [ngClass]="[!isMobileNumber() ? 'align' : 'non-align']">Email agent</button>
+
+      </div>
+
+
+      <!-- ==========================
+            EMAIL POPUP
+          =========================== -->
+      <div class="email-popup mfp-hide" id="email-popup">
+
+        <!-- Header -->
+        <header class="email-popup__header">
+
+          <!-- Label -->
+          <div class="email-popup__label">Email agent:</div>
+
+          <!-- Title -->
+          <div class="email-popup__title">{{property && property.title}}</div>
+
+        </header>
+
+        <!-- Form -->
+        <form class="email-popup__form" id="email-popup-form" (ngSubmit)="sendMail()" [formGroup]="emailForm" novalidate>
+
+          <!-- Name -->
+          <div class="email-popup__field field field--md">
+
+            <!-- Input -->
+            <input class="field__input" name="name" type="text" formControlName="fromName" placeholder="Your name"
+              aria-label="Enter your name">
+            <div
+              *ngIf="emailForm.controls['fromName'].invalid && (emailForm.controls['fromName'].dirty || emailForm.controls['fromName'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="emailForm.controls['fromName'].errors.required">
+                Name is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="email-popup__field field field--md">
+            <!-- Input -->
+            <input class="field__input" name="email" type="email" formControlName="fromEmail" placeholder="Your Email Address"
+              aria-label="Enter your email">
+            <div
+              *ngIf="emailForm.controls['fromEmail'].invalid && emailForm.controls['fromEmail'].errors.email && (emailForm.controls['fromEmail'].dirty || emailForm.controls['fromEmail'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="emailForm.controls['fromEmail'].errors.required">
+                Email is required.
+              </div>
+              <div *ngIf="emailForm.controls['fromEmail'].errors.email">
+                Select Valid email.
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="email-popup__field field field--md">
+
+            <!-- Input -->
+            <input class="field__input" name="tel" type="tel" formControlName="fromMobile" placeholder="Your Mobile Number" aria-label="Enter your phone number">
+
+          </div>
+
+          <!-- Message -->
+          <div class="email-popup__field field field--md">
+            <!-- Input -->
+            <textarea class="field__textarea" name="msg" formControlName="message"
+              placeholder="Enter your message"></textarea>
+            <div
+              *ngIf="emailForm.controls['message'].invalid && (emailForm.controls['message'].dirty || emailForm.controls['message'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="emailForm.controls['message'].errors.required">
+                Message is required.
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <button [disabled]="emailForm.invalid" class="email-popup__submit-btn btn btn--md btn--primary-gradient"
+            type="submit">Message now</button>
+
+        </form>
+
+        <!-- Close button -->
+        <button class="email-popup__close-btn js-close-popup" type="button" aria-label="Close the popup">
+          <svg class="icon">
+            <use xlink:href="#icon-close"></use>
+          </svg>
+        </button>
+
+      </div>

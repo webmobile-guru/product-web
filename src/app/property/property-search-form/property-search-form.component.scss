@@ -1,0 +1,76 @@
+.trending-card__title {height: 42px !important;overflow: hidden !important;}
+
+.ms-parent.select__input.js-multiple-select{ display: inline-block;position: relative;vertical-align: middle;padding-left: 0;padding-right: 0;width: 100%!important;border: 0;text-indent: initial;text-align: left;
+}
+
+.new-search-form__field.select{position: relative;background-color: #fff; border-radius: .5rem;}
+
+.new-search-form__field.select .select__input{padding-top: 0;padding-bottom: 0;padding-left: 1.2rem;padding-right: 3.6rem;width: 100%;height: 3.8rem;color: #2a2626;background-color: transparent;border: 0;border-radius: .5rem;outline: 0;font-size: 1.6rem;line-height: normal;-webkit-transition: all .2s ease;-o-transition: all .2s ease;-moz-transition: all .2s ease;transition: all .2s ease;-webkit-appearance: none;-moz-appearance: none;appearance: none;cursor: pointer;
+  }
+
+.new-search-form__field .rooms-selector__container{padding:5px 0px;}
+.rooms-selector__label{width:auto;padding: 0px 5px;}
+
+.rooms-selector__container{ display: flex; justify-content: space-around;}
+.rooms-selector__input:checked + .rooms-selector__label{padding: 0px 6px;}
+.rooms-selector__item--studio .rooms-selector__label{padding:0px;}
+.select__input.js-multiple-select{padding-left:0px;}
+  .select__input_option{
+    padding:0px !important;
+    border:0px !important;
+  }
+  .select__icon{width: 1.3rem;}
+  
+  .positionRelative{
+    position: relative;
+  }
+  .option {
+    display: block;
+    width: 100%;
+    min-height: 14px;
+    cursor: pointer;
+    padding: 8px 0px;
+    font-size: 14px;
+  }
+  
+  .option:hover {
+    background: #ccc;
+  }
+  
+  .remove-option {
+    cursor: pointer;
+    color: red;
+  }
+  
+  .result-item {
+    font-size: 15px;
+    font-weight: normal;
+  }
+  
+  .badge-style {
+    padding: 5px 10px;
+    height: 25px;
+  }
+  
+  .search-form-loc .dropdown-search{
+    position: absolute;
+    z-index: 100;
+    background: #fff;
+    box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.18);
+    padding: 5px 10px;
+    height: 250px;
+    overflow: auto;
+    top:96%;
+    margin: 0px 1px;
+  }
+  
+  .custom-select__dropdown {
+    bottom: unset !important;
+    top: unset;
+    height: 200px;
+    overflow: auto !important;
+  }
+  
+  .select__input{
+    text-indent: 0 !important;
+  }

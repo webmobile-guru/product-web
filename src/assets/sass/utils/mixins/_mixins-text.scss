@@ -1,0 +1,33 @@
+
+/*
+================================================================================
+
+  Font related mixins
+
+================================================================================
+*/
+
+
+
+/* Font smoothing
+------------------------------------ */
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* Clear children margins
+------------------------------------ */
+
+@mixin clear-children-margins {
+  *:first-child {
+    margin-top: 0;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}

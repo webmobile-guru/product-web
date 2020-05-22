@@ -1,0 +1,52 @@
+
+/*
+================================================================================
+
+  "Verified" component
+
+================================================================================
+*/
+
+.verified {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  background-color: #72c472;
+  //transition: $default-transition;
+  cursor: pointer;
+
+
+  // Expanded state
+  &.js-expanded {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+
+    // Icon
+    .verified__icon {
+      margin-right: 1rem;
+    }
+
+    // Text
+    & > .verified__text {
+      display: block;
+    }
+  }
+
+
+  &__icon {
+    width: 1.4rem;
+    height: 1.2rem;
+    fill: #fff;
+  }
+
+  &__text {
+    display: none;
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: (14/12);
+    white-space: nowrap;
+  }
+}

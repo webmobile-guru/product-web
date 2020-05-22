@@ -1,0 +1,52 @@
+
+/*
+================================================================================
+
+  "Slider Pagination" component
+
+================================================================================
+*/
+
+.slider-pagination {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  // Above the slider
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  // Large modifier
+  &--lg {
+    bottom: 2.8rem;
+
+    // Item
+    .slider-pagination__item {
+      margin-left: 0.75rem;
+      margin-right: 0.75rem;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+
+  &__item {
+    display: block;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: $default-transition;
+
+
+    // Active modifier
+    &--active {
+      box-shadow: 0 0 0 0.2rem #fff;
+    }
+  }
+}

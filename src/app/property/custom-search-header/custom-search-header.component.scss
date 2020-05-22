@@ -1,0 +1,113 @@
+.main-search-tabs__btn.SOLD-1{pointer-events:none;}
+.trending-card__title {
+  height: 42px !important;
+  overflow: hidden !important;
+}
+
+.search-form-location__item .label {
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-left: .8rem;
+  padding-right: .8rem;
+  height: 2.8rem;
+  border-radius: .5rem;
+  background-color: rgba(135,71,146,.2);
+}
+ 
+.search-form-location__item .label__title{
+  color:#343737
+}
+
+.search-form-location__item .label__remove-btn svg{
+  fill:#2a2626
+}
+
+.search-form-location__item .label {
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-left: .8rem;
+  padding-right: .8rem;
+  height: 2.8rem;
+  border-radius: .5rem;
+  background-color: rgba(135,71,146,.2);
+}
+
+.select__input_option{
+  padding:0px !important;
+  border:0px !important;
+}
+
+.ms-parent.select__input button{
+  border:1px solid #2a2626;
+}
+
+.positionRelative {
+  position: relative;
+}
+
+.option {
+  display: block;
+  width: 100%;
+  min-height: 14px;
+  cursor: pointer;
+  padding: 8px 0px;
+  font-size: 14px;
+}
+
+.option:hover {
+  background: #ccc;
+}
+
+.remove-option {
+  cursor: pointer;
+  color: red;
+}
+
+.result-item {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.badge-style {
+  padding: 5px 10px;
+  height: 25px;
+}
+
+.dropdown-search {
+  position: absolute;
+  z-index: 100;
+  background: #fff;
+  box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.18);
+  padding: 5px 10px;
+  height: 250px;
+  overflow: auto;
+  top: 38px;
+  width: 100%;
+}
+
+.custom-select__dropdown {
+  bottom: unset !important;
+  top: unset;
+  height: 200px;
+  overflow: auto !important;
+}
+
+.select__input {
+  text-indent: 0 !important;
+}
+
+.search-form-location__list {
+  margin-bottom: 0px !important;
+}
+
+.label_title_capitalize {
+  text-transform: capitalize;
+}
+
+@media only screen and (max-width: 770px) {
+  .select__input.max-area-input{position: initial;}
+}

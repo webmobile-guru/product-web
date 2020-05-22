@@ -1,0 +1,445 @@
+
+<!-- ==========================
+    HERO
+  =========================== -->
+<section class="new-home-hero">
+  <div class="new-home-hero__container">
+
+    <!-- Header -->
+    <header class="new-home-hero__header">
+      <h1 class="new-home-hero__title">Properties for sale and rent you’ll love</h1>
+    </header>
+
+    <!-- Body -->
+    <div class="new-home-hero__body">
+
+      <!-- Search -->
+      <div class="new-search">
+
+        <!-- Tabs -->
+        <ul class="new-search-tabs">
+          <li class="new-search-tabs__item">
+            <button class="new-search-tabs__btn js-active" type="button" tabindex="-1" data-tab="0"
+              (click)="tabChange(0)">Buy</button>
+          </li>
+
+          <li class="new-search-tabs__item">
+            <button class="new-search-tabs__btn" type="button" data-tab="1" (click)="tabChange(1)">Rent</button>
+          </li>
+
+          <li class="new-search-tabs__item">
+            <button class="new-search-tabs__btn" type="button" data-tab="2" (click)="tabChange(2)">Sold</button>
+          </li>
+        </ul>
+
+        <!-- Tabs content -->
+        <div class="new-search-tabs-content">
+
+          <!-- Buy -->
+          <div class="new-search-tabs-content__section js-active" data-tab="0">
+
+            <!-- Form -->
+            <form class="new-search-form" action="#" method="post">
+
+              <div class="search-form-location positionRelative search-form-loc">
+                <!-- Location -->
+                <div class="location-results">
+                  <ul class="location-results__list">
+                    <li class="location-results__item">
+                      <div class="label" *ngFor="let option of resultLocation;let i = index;">
+                        <div class="label__title">{{option}}</div>
+                        <button class="label__remove-btn" type="button" (click)="removeOption(i)">
+                          <svg class="icon">
+                            <use xlink:href="#icon-close"></use>
+                          </svg>
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Search -->
+                <div class="new-search-form__search">
+                  <input class="new-search-form__input" name="location" type="text" placeholder="Enter location"
+                    (keydown.enter)="onKeydownEnter($event)" (keyup)="searchLocation($event)"
+                    [(ngModel)]="locationSearchValue" autocomplete="off">
+
+                  <button class="new-search-form__submit-btn" type="submit" (click)="searchProperties($event)">
+                    <svg class="icon">
+                      <use xlink:href="#icon-search"></use>
+                    </svg>
+                  </button>
+
+                </div>
+                <div
+                  class="{{locationsArray && locationsArray.length > 0 ? 'show' : ''}} options {{locationsArray && locationsArray.length > 0 ? 'dropdown-search' : '' }}">
+                  <a class="dropdown-item option" *ngFor="let option of locationsArray"
+                    (click)="addOption(option.name,option.slug);">{{option.name}}<ng-container *ngIf="option.parentString"> ({{option.parentString}})</ng-container></a>
+                </div>
+              </div>
+              <!-- Fields -->
+              <div class="new-search-form__fields">
+
+                <!-- Property type -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select class="select__input js-custom-select" name="property-type"
+                    aria-label="Select a property type" [(ngModel)]="searchForm.unitType">
+                    <option value="" selected style="color: grey">Property type</option>
+                    <option *ngFor="let unit of unitTypes" value="{{unit.value}}">{{unit.label}}</option>
+                  </select>
+
+                </div>
+
+
+                <!-- Min price -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+
+                  <select *ngIf="searchForm.listingType==='RENT'" class="select__input js-custom-select" name="min-price"
+                    aria-label="Select your minimum price" [(ngModel)]="searchForm.minPrice">
+                    <option value="0" selected style="color: grey">Min Price</option>
+                    <option *ngFor="let price of pricesRent" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                  <select *ngIf="searchForm.listingType==='SALE' || searchForm.listingType==='COMMERCIAL'"
+                    class="select__input js-custom-select" name="min-price" aria-label="Select your minimum price"
+                    [(ngModel)]="searchForm.minPrice">
+                    <option value="0" selected style="color: grey">Min Price</option>
+                    <option *ngFor="let price of pricesSale" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                </div>
+
+                <!-- Max price -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select *ngIf="searchForm.listingType==='RENT'" class="select__input js-custom-select" name="max-price"
+                    aria-label="Select your maximum price" [(ngModel)]="searchForm.maxPrice">
+                    <option value="0" selected style="color: grey">Max Price</option>
+                    <option *ngFor="let price of pricesRent" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                  <select *ngIf="searchForm.listingType==='SALE' || searchForm.listingType==='COMMERCIAL'"
+                    class="select__input js-custom-select" name="max-price" aria-label="Select your maximum price"
+                    [(ngModel)]="searchForm.maxPrice">
+                    <option value="0" selected style="color: grey">Max Price</option>
+                    <option *ngFor="let price of pricesSale" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                </div>
+
+
+                <!-- Furnishing -->
+                <div class="new-search-form__field select select--md">
+
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+                  <select class="select__input js-custom-select rooms" name="rooms" aria-label="Select Bedrooms"
+                    [(ngModel)]="searchForm.rooms" (change)="updateBedrooms($event)">
+                    <option value="0" style="color: grey" selected>Bedrooms</option>
+                    <option *ngFor="let room of rooms" value="{{room.value}}">{{room.label}}</option>
+                  </select>
+
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- Rent -->
+          <div class="new-search-tabs-content__section" data-tab="1">
+
+            <!-- Form -->
+            <form class="new-search-form" action="#" method="post">
+
+              <!-- Location -->
+              <div class="location-results">
+                <ul class="location-results__list">
+                  <li class="location-results__item">
+                    <div class="label" *ngFor="let option of resultLocation;let i = index;">
+                      <div class="label__title">{{option}}</div>
+                      <button class="label__remove-btn" type="button" (click)="removeOption(i)">
+                        <svg class="icon">
+                          <use xlink:href="#icon-close"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Search -->
+              <div class="search-form-location positionRelative">
+                <div class="new-search-form__search">
+                  <input class="new-search-form__input" name="location" type="text" placeholder="Enter location"
+                    (keydown.enter)="onKeydownEnter($event)" (keyup)="searchLocation($event)"
+                    [(ngModel)]="locationSearchValue" autocomplete="off">
+
+                  <button class="new-search-form__submit-btn" type="submit" (click)="searchProperties($event)">
+                    <svg class="icon">
+                      <use xlink:href="#icon-search"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  class="{{locationsArray && locationsArray.length > 0 ? 'show' : ''}} options {{locationsArray && locationsArray.length > 0 ? 'dropdown-search' : '' }}">
+                  <a class="dropdown-item option" *ngFor="let option of locationsArray"
+                    (click)="addOption(option.name,option.slug);">{{option.name}}<ng-container *ngIf="option.parentString"> ({{option.parentString}})</ng-container></a>
+                </div>
+              </div>
+
+              <!-- Fields -->
+              <div class="new-search-form__fields">
+
+                <!-- Property type -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select class="select__input js-custom-select" name="property-type"
+                    aria-label="Select a property type" [(ngModel)]="searchForm.unitType">
+                    <option value="" selected style="color: grey">Property type</option>
+                    <option *ngFor="let unit of unitTypes" value="{{unit.value}}">{{unit.label}}</option>
+                  </select>
+
+                </div>
+
+                <!-- Min price -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+
+                  <select *ngIf="searchForm.listingType==='RENT'" class="select__input js-custom-select" name="min-price"
+                    aria-label="Select your minimum price" [(ngModel)]="searchForm.minPrice">
+                    <option value="0" selected style="color: grey">Min Price</option>
+                    <option *ngFor="let price of pricesRent" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                  <select *ngIf="searchForm.listingType==='SALE' || searchForm.listingType==='COMMERCIAL'"
+                    class="select__input js-custom-select" name="min-price" aria-label="Select your minimum price"
+                    [(ngModel)]="searchForm.minPrice">
+                    <option value="0" selected style="color: grey">Min Price</option>
+                    <option *ngFor="let price of pricesSale" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                </div>
+
+                <!-- Max price -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+
+                  <select *ngIf="searchForm.listingType==='RENT'" class="select__input js-custom-select" name="max-price"
+                    aria-label="Select your maximum price" [(ngModel)]="searchForm.maxPrice">
+                    <option value="0" selected style="color: grey">Max Price</option>
+                    <option *ngFor="let price of pricesRent" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                  <select *ngIf="searchForm.listingType==='SALE' || searchForm.listingType==='COMMERCIAL'"
+                    class="select__input js-custom-select" name="max-price" aria-label="Select your maximum price"
+                    [(ngModel)]="searchForm.maxPrice">
+                    <option value="0" selected style="color: grey">Max Price</option>
+                    <option *ngFor="let price of pricesSale" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+                </div>
+
+
+                <!-- Amenities -->
+                <div class="new-search-form__field select select--md">
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <select class="select__input js-custom-select rooms" name="rooms" aria-label="Select Bedrooms"
+                    [(ngModel)]="searchForm.rooms" (change)="updateBedrooms($event)">
+                    <option value="0" style="color: grey" selected>Bedrooms</option>
+                    <option *ngFor="let room of rooms" value="{{room.value}}">{{room.label}}</option>
+                  </select>
+
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- Commercial -->
+          <div class="new-search-tabs-content__section" data-tab="2">
+
+            <!-- Form -->
+            <form class="new-search-form" action="#" method="post">
+
+              <!-- Location -->
+              <div class="location-results">
+                <ul class="location-results__list">
+                  <li class="location-results__item">
+                    <div class="label" *ngFor="let option of resultLocation;let i = index;">
+                      <div class="label__title">{{option}}</div>
+                      <button class="label__remove-btn" type="button" (click)="removeOption(i)">
+                        <svg class="icon">
+                          <use xlink:href="#icon-close"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Search -->
+              <div class="search-form-location positionRelative">
+                <div class="new-search-form__search">
+                  <input class="new-search-form__input" name="location" type="text" placeholder="Enter location"
+                    (keydown.enter)="onKeydownEnter($event)" (keyup)="searchLocation($event)"
+                    [(ngModel)]="locationSearchValue" autocomplete="off">
+
+                  <button class="new-search-form__submit-btn" type="submit" (click)="searchProperties($event)">
+                    <svg class="icon">
+                      <use xlink:href="#icon-search"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div
+                  class="{{locationsArray && locationsArray.length > 0 ? 'show' : ''}} options {{locationsArray && locationsArray.length > 0 ? 'dropdown-search' : '' }}">
+                  <a class="dropdown-item option" *ngFor="let option of locationsArray"
+                    (click)="addOption(option.name,option.slug);">{{option.name}}<ng-container *ngIf="option.parentString"> ({{option.parentString}})</ng-container></a>
+                </div>
+              </div>
+
+              <!-- Fields -->
+              <div class="new-search-form__fields">
+
+                <!-- Property type -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select class="select__input js-custom-select" name="property-type"
+                    aria-label="Select a property type" [(ngModel)]="searchForm.unitType">
+                    <option value="" selected style="color: grey">Property type</option>
+                    <option *ngFor="let unit of unitTypesCommercial" value="{{unit.value}}">{{unit.label}}</option>
+                  </select>
+
+                </div>
+
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select class="select__input js-custom-select" name="propertyCommercialType"
+                    aria-label="Select a Commercial type" [(ngModel)]="searchForm.propertyCommercialType"
+                    (ngModelChange)="commercialTypeChange($event)" >
+                    <option *ngFor="let commtype of commercialType" value="{{commtype.value}}" selected>{{commtype.label}}
+                    </option>
+                  </select>
+
+                </div>
+
+
+                <!-- Min price -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select *ngIf="searchForm.commercialListingType==='RENT'" class="select__input  js-custom-select"
+                    name="min-price" aria-label="Select your minimum price" [(ngModel)]="searchForm.minPrice">
+                    <option value="0" selected style="color: grey">Min Price</option>
+                    <option *ngFor="let price of pricesRent" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                  <select *ngIf="searchForm.commercialListingType==='SALE' || searchForm.commercialListingType==='COMMERCIAL'"
+                    class="select__input  js-custom-select" name="min-price" aria-label="Select your minimum price"
+                    [(ngModel)]="searchForm.minPrice">
+                    <option value="0" selected style="color: grey">Min Price</option>
+                    <option *ngFor="let price of pricesSale" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                </div>
+
+                <!-- Max price -->
+                <div class="new-search-form__field select select--md">
+
+                  <!-- Icon -->
+                  <svg class="select__icon">
+                    <use xlink:href="#icon-chevron-down"></use>
+                  </svg>
+
+                  <!-- Select -->
+                  <select *ngIf="searchForm.commercialListingType==='RENT'" class="select__input js-custom-select"
+                    name="max-price" aria-label="Select your maximum price" [(ngModel)]="searchForm.maxPrice">
+                    <option value="0" selected style="color: grey">Max Price</option>
+                    <option *ngFor="let price of pricesRent" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                  <select *ngIf="searchForm.commercialListingType==='SALE' || searchForm.commercialListingType==='COMMERCIAL'"
+                    class="select__input js-custom-select" name="max-price" aria-label="Select your maximum price"
+                    [(ngModel)]="searchForm.maxPrice">
+                    <option value="0" selected style="color: grey">Max Price</option>
+                    <option *ngFor="let price of pricesSale" value="{{price.value}}">{{price.label}}</option>
+                  </select>
+
+                </div>
+
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
