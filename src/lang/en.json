@@ -1,0 +1,23 @@
+{
+  "all": "All",
+  "appname": "Folk_ME",
+  "close": "Close",
+  "collectors": "Collectors",
+  "contofperf": "Context of performing",
+  "date_of_collecting": "Date of collecting",
+  "descriptors": "Descriptors",
+  "genres": "Genres",
+  "items": "items",
+  "lyrics": "lyrics",
+  "participants": "Participants",
+  "performers": "Performers",
+  "themesandmotifs": "Themes and Motifs",
+  "content": {
+    "home1": "Home page test content"
+  },
+  "pages": {
+    "archive": "Archive",
+    "notationtest": "Notation test",
+    "notationtest2": "Notation test 2"
+  }
+}

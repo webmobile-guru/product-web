@@ -1,0 +1,23 @@
+{
+  "all": "Minden",
+  "appname": "Folk_ME",
+  "close": "Bezárás",
+  "collectors": "Gyűjtők",
+  "contofperf": "Előadás kontextusa",
+  "date_of_collecting": "Gyűjés ideje",
+  "descriptors": "Leírás",
+  "genres": "Műfaj",
+  "items": "találat",
+  "lyrics": "Dalszöveg",
+  "participants": "Segítők",
+  "performers": "Előadók",
+  "themesandmotifs": "Téma, motívum",
+  "content": {
+    "home1": "Nyitólapi teszt tartalom"
+  },
+  "pages": {
+    "archive": "Archívum",
+    "notationtest": "Kotta teszt",
+    "notationtest2": "Kotta teszt 2"
+  }
+}
