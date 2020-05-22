@@ -1,0 +1,119 @@
+/*for mobile*/
+@media only screen and (max-width:760px) {
+.logo_inner {width: 100px;}
+.menu_section {width: 100%; }
+.login_ul {width: 100%; text-align: center; margin-top: 0px;}
+.login_ul li a {padding: 2px 5px; font-size: 13px;}
+.login_ul li {margin: 0px 0px;}
+#openNav {position: absolute; top: -14px; right: 18px;}
+.top_section {padding-right: 52px; padding-left: 52px;}
+.all_padding {padding: 30px 0px;}
+.all_heading {margin-bottom: 10px; font-size: 20px; text-align: center;}
+.register_inner {padding: 20px 20px;}
+.store_inner {margin: 10px 0px; padding: 5px 5px 5px 75px; border: 1px solid #ccc;}
+.store_inner img {top: 20px; left: 8px; width: 42px;}
+.buy_sell_bg {margin-top: 0px;}
+.app_section img{width: 100px; margin: auto; display: block;}
+.sticky{position: static !important;}
+.live_demo_text {display: none;}
+body {padding-bottom: 0px;}
+.login_heading {padding: 8px 5px;} 
+.login_heading h3 {font-size: 20px;}
+.login_body {padding: 20px;}
+.top_left_ul li:nth-child(3) {display:none;}
+.top_left_ul li:nth-child(4) {display:none;}
+.top_left_ul li:nth-child(6) {display:none;}
+.top_left_ul li:nth-child(7) {display:none;}
+.top_left_ul {margin-top: 0px;}
+.carousel-caption h2 {font-size: 35px;}
+.fill{height: 400px;}
+.carousel-caption {right: 5%; left: 5%;}
+.carousel-caption{padding-bottom:100px;}
+.top_left_ul li {padding: 0px 10px;}
+.sign_button {margin-bottom: 10px;}
+.modal_left {display: none;}
+.modal_inner {padding-left: 0px;}
+.whychoose_ul li {width: 46.5%; padding: 5px; margin: 5px; min-height: 230px;}
+.whychoose_ul li img {width: 35px; margin-top: 10px;}
+.whychoose_ul li h2 {font-size: 15px;}
+.whychoose_ul li p {font-size: 14px; line-height: 19px;}
+.testimonial_inner .row{margin-right: -5px; margin-left: -5px;}
+.testimonial_inner .col-xs-6 {padding-right: 5px; padding-left: 5px;}
+.testimonial_body {padding: 5px;}
+.testimonial_border p {font-size: 14px;}
+.testimonial_border h3 {font-size: 16px;}
+.testimonial_border h4 {font-size: 16px;}
+.sm_heading {margin-bottom: 10px;}
+.icolist_tab .nav-tabs > li {width: 33.33%; float: left; margin-bottom: 2px; margin-right: 0px;}
+.icolist_tab .nav-tabs > li > a {font-size: 12px; padding: 5px 4px; text-align: center;}
+.icodetails_img {width: 100px; margin: auto; display: block;}
+.details_user_ul li {width: 50%;}
+.icodetails_bg {margin-top: 10px;}
+.details_inner iframe {height: 200px; margin-bottom: 15px;}
+.toplist_body {min-height: 100%;}
+.toplist_body p {font-size: 13px;}
+.icobox.affix {position: static;width: 100%;margin-bottom: 10px;}
+.icoinner .icopart1 {width: 26%; padding: 5px 10px;}
+.icoinner .icopart2 {width: 74%;padding: 5px 10px;}
+.icoinner .icopart3 {width: 100%;padding: 5px 10px;}
+.icoinner .icopart4 {width: 50%;padding: 5px 10px;}
+.ico_serach .btn-default, .form-control {margin-bottom: 10px;}
+.toplist_img h5 {font-size: 14px; }
+.list_scroll .item {margin: 0px 5px;}
+.toplist_img {min-height: 139px; }
+.chatbox {width: 100%;}
+.login_padding {padding: 15px 30px;}
+.login_height {min-height: 100%;}
+.login_bg_02 img {margin-top: 5px; display: none;}
+.login_right_circle {display:none;}
+.icodetails_img {width: 100px; margin: auto; display: block;}
+.details_user_ul li {width: 50%;}
+.details_user_ul li a h4 {font-size: 15px;}
+.details_inner iframe {height: 200px;}
+.icodetails_name {margin-top: 6px; text-align: center;}
+.top_left_ul li:nth-child(3) {display: none;}
+.top_left_ul li:nth-child(4) {display: none;}
+.top_left_ul li:nth-child(6) {display: none;}
+.top_left_ul li:nth-child(7) {display: none;}
+.buy_sell_part {width: 100%;}
+.book_history_part {width: 100%; padding: 0px 0px; margin: 7px 0px;}
+.graph_part {width: 100%;}
+footer {padding: 15px 0px; position: static; height: 100%;}
+.open_history_width {padding-left: 0%;}
+.graph_img {height: 200px;}
+.top_left_ul li {padding: 0px 10px;}
+.dropdown-container {width: 100%;}
+.exch_drop_down {position: static; float: right; padding: 5px;}
+.excchange_20 { width: 100%;}
+.excchange_55 { width: 100%;}
+.excchange_25 { width: 100%;}
+.smheader_logo {left: 13px;}
+.live_demo {left: 38px;}
+#chartContainer{height:200px;}
+.referal_height{min-height:100%;}
+
+}
+
+/*for medium mobile*/
+@media only screen and (min-width:480px) and (max-width:760px) {
+.live_demo_text {display: none;}
+
+}
+/*for tablet*/
+@media only screen and (min-width:760px) and (max-width:1000px) {
+.top_left_ul li:nth-child(3) {display:none;}
+.top_left_ul li:nth-child(4) {display:none;}
+.market_height {height: 291px;}
+.live_demo_text { display: none;}
+
+}
+
+/*for destop*/
+@media (min-width: 1200px){
+ .container{width:1250px;}
+
+ }
+
+
+
+

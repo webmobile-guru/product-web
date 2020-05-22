@@ -1,0 +1,165 @@
+@font-face {
+	font-family: DINPro;
+	src: url('../fonts/DINPro.otf');
+	unicode-range: U+30-39
+}
+
+@font-face {
+	font-family: DINPro-Medium;
+	src: url('../fonts/DINPro-Medium.otf');
+	unicode-range: U+30-39
+}
+
+@font-face {
+	font-family: DINPro-Bold;
+	src: url('../fonts/DINPro-Bold.otf');
+	unicode-range: U+30-39
+}
+
+@font-face {
+	font-family: DINPro-Light;
+	src: url('../fonts/DINPro-Light.otf');
+	unicode-range: U+30-39
+}
+
+@font-face {
+	font-family: IBMPlexSans-Light;
+	src: url('../fonts/IBMPlexSans-Light.otf')
+}
+
+@font-face {
+	font-family: IBMPlexSans-Medium;
+	src: url('../fonts/IBMPlexSans-Medium.otf')
+}
+
+@font-face {
+	font-family: IBMPlexSans-Regular;
+	src: url('../fonts/IBMPlexSans-Regular.otf')
+}
+
+@font-face {
+	font-family: IBMPlexSans-SemiBold;
+	src: url('../fonts/IBMPlexSans-SemiBold.otf')
+}
+
+@font-face {
+	font-family: IBMPlexSans-ExtraLight;
+	src: url('../fonts/IBMPlexSans-ExtraLight.otf')
+}
+
+
+body{background-color: #12161c; color:#212833; font-family: DINPro-Light, IBMPlexSans-ExtraLight, "Microsoft YaHei", PingFangSC-Regular, Arial, sans-serif;}
+.table thead tr th {
+    font-size: 13px !important;
+   color: #999 !important;
+    font-family: DINPro, IBMPlexSans-Medium, Microsoft YaHei, PingFangSC-Regular, Arial, sans-serif !important;
+}
+.table {color: #212529 !important;}
+.table.table-light > tbody > tr > td {color: #212529;}
+.page-container-bg-solid .page-bar .page-breadcrumb > li > a, .page-container-bg-solid .page-bar .page-breadcrumb > li > span, .page-content-white .page-bar .page-breadcrumb > li > a, .page-content-white .page-bar .page-breadcrumb > li > span {
+ color: rgb(132, 142, 156);}
+.page-footer {font-size: 12px;}
+.portlet.light.bordered > .portlet-title { background: #fafafa; padding: 4px 20px;}
+.portlet.light > .portlet-title > .caption {color: rgb(33, 40, 51); font-weight: bold;}
+
+.page-sidebar-closed .logo_hide{display:none;}
+.logo_hide{width:80px;}
+.portlet.light {box-shadow: rgba(0, 0, 0, 0.04) 0px 10px 80px 0px; padding: 0px;}
+.portlet.light .portlet-body {padding: 12px 20px 15px;}
+.page-header-fixed .page-container {margin-top: 70px;}
+.page-container-bg-solid .page-bar, .page-content-white .page-bar {  margin: -24px -20px 0; background: #18181a;}
+.page-header.navbar {height: 70px;}
+.page-header.navbar {background: #12161c; border-bottom: 1px solid rgba(234, 236, 239, 0.1);;padding: 7px 0px;}
+.top-menu .navbar-nav > li.dropdown-user > .dropdown-toggle > .username{color:#fff !important;}
+.page-container-bg-solid .page-bar, .page-content-white .page-bar {margin: -25px -20px 0; background: #1a1f26;}
+.page-sidebar, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover {background-color: #12161c;}
+.page-sidebar .nav-item a i{color: rgb(132, 142, 156) !important;}
+.page-sidebar .nav-item a{color: rgb(132, 142, 156) !important;}
+.page-sidebar .nav-item a:hover{color: rgb(255, 255, 255) !important;}
+.page-sidebar .nav-item a:hover i{color: rgb(255, 255, 255) !important;}
+.page-sidebar .page-sidebar-menu > li > a{border-top:none;}
+.page-sidebar .page-sidebar-menu > li:hover > a{background: #12161c;}
+.page-sidebar .page-sidebar-menu > li.active > a{background: #12161c;}
+.page-sidebar .page-sidebar-menu > li.active > a:hover{background: #12161c;}
+.page-sidebar .page-sidebar-menu li > a > .arrow::before{color: rgb(132, 142, 156) !important;}
+.page-sidebar .page-sidebar-menu > li.open > a{background: rgba(120, 120, 120, 0.1);}
+.page-sidebar .page-sidebar-menu .sub-menu > li:hover > a{background: rgba(120, 120, 120, 0.1) !important;}
+.page-sidebar .page-sidebar-menu > li.active.open > a, .page-sidebar .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {
+    background: #12161c !important;}
+.page-sidebar .page-sidebar-menu .sub-menu > li.active > a{background: rgba(120, 120, 120, 0.1) !important;}
+.page-footer .page-footer-inner {color: #707d98;}
+.scroll-to-top > i {color: #000;}
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover{background: transparent;}
+.page-sidebar{position: fixed; height:100%;}
+.ico_details_margin{margin:10px 0px; overflow: hidden;}
+.ico_details_1{float: left; width:40%; color: #939393;}
+.ico_details_2{float: left; width:60%; padding-left: 10px;}
+.icodetails_bg{background: #f5f5f5; box-shadow: 0px 0px 7px 2px #ccc; padding:15px; overflow: hidden;}
+.icodetails_name{margin-top: 0px; color: #12161c}
+.details_user_ul{list-style: none; overflow: hidden; padding-left: 0px; text-align: center; margin-bottom: 0px;}
+.details_user_ul li{float:left; width:33.333%; padding: 5px 5px;}
+.details_user_ul li a{display: block; height: 210px; padding: 10px 5px; background: #f5f5f5;}
+.details_user_ul li a img{width: 100px; height: 100px; border-radius: 50% !important; border: 1px solid #ccc; padding: 2px;}
+.details_user_ul li a h4{color: #000; font-size: 15px;}
+.details_user_ul li a p{margin-bottom: 0px; color: #12161c; font-size: 15px;}
+.details_user_ul li a:hover{box-shadow: 0px 0px 7px 2px #ccc; text-decoration: none;}
+.icodetails_media{list-style: none; float: left; padding-left: 0px; margin-bottom: 0px;}
+.icodetails_media li{display: inline-block; padding-right: 5px;}
+.icodetails_media li a{display: inline-block; color: #656565; width: 27px; height: 27px; border: 1px solid #656565; border-radius: 50% !important; text-align: center;}
+.icodetails_media li a:hover{background: #656565; color:#fff;}
+.icodetails_media li a i{font-size: 13px;}
+.form-control {height: 35px;}
+.btn-primary {
+    color: #fff;
+    background-color: #185e60;
+    border-color: #185e60;
+}
+.btn-primary.active, .btn-primary:active, .btn-primary:hover, .open > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #16797b;
+    border-color: #16797b;
+}
+.btn.btn-outline.red.active, .btn.btn-outline.red:active, .btn.btn-outline.red:active:focus, .btn.btn-outline.red:active:hover, .btn.btn-outline.red:focus, .btn.btn-outline.red:hover {
+    border-color: #81343a;
+    color: #fff;
+    background-color: #81343a;
+}
+.btn.btn-outline.red {
+    border-color: #81343a;
+    color: #81343a;
+    background: 0 0;
+}
+.qrcode_text{color: #36c6d3; text-align: center; cursor: pointer;}
+.qrcode_inner{max-width: 240px; margin: 0px auto 10px auto; text-align: center;}
+.qrcode_inner img{width: 100%;}
+#qrcode_address{font-weight: bold; margin:0px;}
+.show_qrcode{cursor: pointer; display: inline-block; padding: 0px 6px; color: #a800ff;}
+.copy_qrcode{cursor: pointer; display: inline-block; color: #16aa16;}
+/* Media Queries
+-------------------------------------------------------------- */
+/*for mobile*/
+@media only screen and (max-width:760px) {
+.page-sidebar{position: static;}
+.details_user_ul li {width: 50%;}
+.details_user_ul li a {height: 225px;}
+.icodetails_bg {box-shadow: none;}
+
+
+}
+/*for medium mobile*/
+@media only screen and (min-width:480px) and (max-width:1024px) {
+
+
+}
+/*for tablet*/
+@media only screen and (min-width:760px) and (max-width:1024px) {
+.page-sidebar{position: static;}
+
+
+}
+
+/*for destop*/
+@media (min-width: 1200px){
+
+
+ }

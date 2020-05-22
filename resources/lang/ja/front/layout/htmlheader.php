@@ -1,0 +1,9 @@
+
+
+<?php
+
+return[
+	'Optex' => 'Doch' 
+];
+
+?>

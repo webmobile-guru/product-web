@@ -1,0 +1,98 @@
+/*for mobile*/
+@media only screen and (max-width:760px) {
+.login_menu{display: block !important;}
+.top_right_ul{display: none;}
+.logo_section {height: unset;}
+#cssmenu.align-center > ul {text-align: left !important; }
+#cssmenu {text-align: left;}
+.top_left_ul li {padding: 15px 15px 15px 0px; font-size: 11px;}
+.logo_inner {background: #151515; padding: 8px 0px;}
+.top_left_ul li a img {width: 16px;}
+.banner_section {padding: 60px 0px;}
+.banner_container h1 {font-size: 30px;}
+.sm_about_section {padding: 20px 0px;}
+.fastest_secure_section {min-height:unset;}
+.buy_sell_headingcolor .heading_top h1 {color: #000;}
+.buy_sell_headingcolor .heading_top p {color: #616468;}
+.buy_sell_headingcolor .heading_top img {filter: unset;}
+.buy_sell_ul {margin-bottom: 10px;}
+.buy_sell_section {margin-top: 0px;}
+.buy_sell_ul li a {width: 135px;}
+.service_heading {padding: 10px 0px; background: #f6ae01;}
+.phone_section {padding-top: 20px;}
+.phone_position_01{position: static;}
+.phone_position_02{position: static;}
+.phone_position_03{position: static;}
+.phone_left {border-radius: 50%; display: block; float: unset;  margin: 10px auto;}
+.phone_container {text-align: center;}
+.phone_hover{width:100%; padding: 10px 0px;}
+.phone_right_part .phone_right {float: unset; width: 100%; text-align: center;}
+.phone_right_part .phone_left {margin: 0px auto; display: block;}
+.map_padding_right {padding-right: 0px;}
+.map_padding_left {padding-left: 0px;}
+.allcoin_section { padding: 20px 0px;}
+.contact_bg {padding: 0px 0px;}
+.contact_hover {margin: 10px 0px;}
+.footer_menu {text-align: left;}
+.banner_ul li a {margin: 3px 2px; width: 134px; padding: 11px; font-size: 13px; }
+.heading_top h1 {font-size: 28px;}
+.heading_top p {font-size: 17px; margin-top: 5px;}
+.login_rightpart{display: none;}
+.login_leftpart{display: none;}
+.login_section{padding:20px 0px;}
+.accordion_body{padding:10px 10px; }
+.graph_bg h2 {font-size: 25px;}
+#cssmenu > ul > li > ul::after {display: none;}
+.affix {position: static !important;}
+.nav-tabs > li > a {padding: 10px;}
+.graph_padding{padding: 0px 6px; background:#fff; margin-bottom:15px;  }
+.highest_size {font-size: 17px !important; }
+.price_section h1 {font-size: 35px;}
+footer p {margin-top: 10px; margin-bottom: 10px;}
+.footer_logo {float: left;}
+.wallet_section h1 {font-size: 30px;}
+.faq_section {padding:10px 0px; }
+.accordion_head {text-align: left; font-size: 19px; padding: 5px 5px;}
+.inner_btn {float:unset;}
+.list-group .save_input {margin:5px 0px;}
+}
+/*for medium mobile*/
+@media only screen and (min-width:480px) and (max-width:760px) {
+
+
+}
+/*for tablet*/
+@media only screen and (min-width:760px) and (max-width:1000px) {
+.logo_inner {padding: 6px 11px;}
+.logo_inner img {width: 100%;}
+.fastest_secure_section {min-height:unset;}
+.buy_sell_section {margin-top: 0px;}
+.buy_sell_headingcolor .heading_top h1 {color: #000;}
+.buy_sell_headingcolor .heading_top p {color: #616468;}
+.buy_sell_headingcolor .heading_top img {filter: unset;}
+.buy_sell_ul {margin-bottom: 10px;}
+.buy_sell_section {margin-top: 0px;}
+.top_left_ul li { padding: 15px 9px 15px 0px;}
+#cssmenu {text-align: left;}
+.banner_section {padding: 60px 0px;}
+.footer_menu li a {padding: 0px 10px;}
+.map_padding_right {padding-right: 0px;}
+.map_padding_left {padding-left: 0px;}
+
+
+
+
+
+
+
+}
+
+/*for destop*/
+@media (min-width: 1200px){
+ .container { width: 1134px;}
+
+ }
+
+
+
+
