@@ -1,0 +1,33 @@
+.navbar {
+    color: #FFFFFF;
+    background-color: #ffccbc;
+}
+
+.navbar-toggler {
+    border: 0;
+    padding: 0;
+}
+
+.content {
+    height: calc( 100vh - 46px );
+    padding-top: 120px;
+}
+
+@media (max-width: 576px) {
+    .content {
+        padding-top: 70px;
+    }
+}
+
+.img-fluid {
+    width: 100%;
+}
+
+#btlogin {
+    background-color: #ffccbc;
+    border: 0;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+}

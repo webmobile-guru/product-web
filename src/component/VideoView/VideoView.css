@@ -1,0 +1,89 @@
+.navbar {
+    color: #FFFFFF;
+    background-color: #ffccbc;
+}
+
+.navbar-toggler {
+    border: 0;
+}
+
+.container-fluid {
+    background-color: #f7f7f7;
+}
+
+.min_height {
+    min-height: calc( 100vh - 46px );
+}
+
+.video_body {
+    background-color: #fff;
+    padding: 0;
+}
+
+.btn-link, .btn-link:hover{
+    color: #ffccbc;
+}
+
+.btn-link {
+    margin: auto;
+}
+
+.list {
+    background: #fff;
+    /* height: 500px; */
+}
+
+span.circle {
+    background: #cb9b8c;
+     border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin: 0;
+    text-align: center;
+    width: 1.6em; 
+}
+
+#selected {
+    background-color: #f7f7f7;
+
+}
+
+.progress-tag {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.list-title {
+    border-left: solid 1px #e5e5e5;
+    border-right: solid 1px #e5e5e5;
+}
+
+@media (max-width: 576px) {
+    .list-col {
+        padding: 0;
+    }
+
+    .list-title {
+        border-left: 0;
+        border-bottom: solid 1px #e5e5e5;
+    }
+}
+
+.list-item {
+    cursor: pointer;
+}
+
+.list-item:hover {
+    background: #f7f7f7;
+}
+
+#btn {
+    background-color: #ffccbc;
+    border: 0;
+}
+
+

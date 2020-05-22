@@ -1,0 +1,25 @@
+.mymodal-body {
+    padding: 2px;
+}
+
+.col-4 {
+    padding: 2px;
+}
+
+.my-cell {
+    margin-top: 26px;
+    margin-bottom: 26px;
+    width: 100%;
+    text-align: center;
+}
+
+.close-btn {
+    color: #cb9b8c;
+    font-size: 32px;
+}
+
+.check-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
