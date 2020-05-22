@@ -1,0 +1,31 @@
+{
+  "folders": [
+    {
+      "name": "common",
+      "path": "common"
+    },
+    {
+      "name": "back-end",
+      "path": "back-end"
+    },
+    {
+      "name": "front-end",
+      "path": "front-end"
+    }
+  ],
+  "launch": {
+    "configurations": [
+      {
+        "name": "Start Back-End Server",
+        "request": "launch",
+        "type": "node",
+        "runtimeArgs": ["-r", "ts-node/register"],
+        "args": ["${workspaceFolder:back-end}/server/server.ts"],
+        "cwd": "${workspaceFolder:back-end}",
+        "protocol": "inspector",
+        "internalConsoleOptions": "openOnSessionStart"
+      }
+    ]
+  },
+  "settings": {}
+}
